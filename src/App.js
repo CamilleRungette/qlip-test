@@ -3,7 +3,8 @@ import "./App.scss";
 import jsonData from "./transcript.json";
 import ReactQuill from "react-quill"
 import 'react-quill/dist/quill.snow.css'
-import {BsArrowCounterclockwise} from "react-icons/bs"
+import {BsArrowCounterclockwise} from "react-icons/bs";
+import {AiOutlineQuestionCircle} from "react-icons/ai"
 
 const App = () => {
 
@@ -108,6 +109,7 @@ const App = () => {
     console.log(video);
     video.pause();
     video.currentTime = 0;
+    video.load();
     setTimestamps({initial: 0, end: video.duration ? video.duration : 0});
 
     let newText = ""
@@ -140,7 +142,11 @@ const App = () => {
           <source src="/Reaction_Time.mp4" type="video/mp4"/>
         </video>
       </div>
-
+      
+      <div className='question-div'>
+        <AiOutlineQuestionCircle className='question-icon' />
+        <div className='infobulle'><p>To select a part of the text, highlight it</p></div>
+      </div>
       <div className='editor'>
         <ReactQuill
           theme='snow'
