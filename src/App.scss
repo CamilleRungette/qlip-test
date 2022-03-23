@@ -1,0 +1,68 @@
+
+.main-app{
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  color: white;
+
+  .highlight{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 4rem;
+    margin-top: 8rem;
+  };
+  
+  .highlight-infos{
+    height: 300px;
+    position: relative;
+  };
+
+  .highlight-title{
+    font-weight: normal;
+  };
+
+  .highlight-buttons{
+    position: absolute;
+    bottom: 0;
+
+    .primary-button{
+      font-size: 24px;
+      padding: .5rem 1rem
+    };
+  
+    .icon{
+      font-size: 36px;
+      margin-left: 30px;
+      vertical-align: middle;
+      cursor: pointer;
+      padding: 4px;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      
+      &:hover{
+        background-color: rgb(65, 65, 65);
+      }
+    };
+  };
+
+  .editor{
+    width: 80%;
+    margin: auto;
+
+    .editor-wrapper{
+      border: 1px white solid;
+    }
+  }
+};
+
+
+.show{
+  display: block;
+};
+
+.hide{
+  display: none;
+}
