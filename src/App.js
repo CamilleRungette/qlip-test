@@ -7,7 +7,7 @@ import {BsArrowCounterclockwise} from "react-icons/bs"
 
 const App = () => {
 
-  const json = jsonData.monologues[0]
+  const json = jsonData.monologues[0];
 
   const [convertedText, setConvertedText] = useState("");
   const [timesStamps, setTimestamps] = useState({
@@ -15,7 +15,6 @@ const App = () => {
     end: 0
   });
   
-// Obtenir la valeur du texte
   useMemo(() => {
     let value = ""
     json.elements.map(el => {
@@ -24,6 +23,7 @@ const App = () => {
 
     setConvertedText(value);
   }, []);
+
 
   useEffect(() => {
     cancelTrim();
@@ -66,7 +66,6 @@ const App = () => {
           resolve (selectedElements)
         };
       }).then(result => {
-        console.log(result);
         if (result.length) setTimestamps({initial: selectedElements[0].ts, end: selectedElements[selectedElements.length-1].ts})
         else setTimestamps({initial: 0, end: video.duration});
       });
@@ -106,9 +105,10 @@ const App = () => {
 
   const cancelTrim = () => {
     const video = document.getElementById('video');
+    console.log(video);
     video.pause();
     video.currentTime = 0;
-    setTimestamps({initial: 0, end: video.duration});
+    setTimestamps({initial: 0, end: video.duration ? video.duration : 0});
 
     let newText = ""
     json.elements.map(el => {
@@ -117,7 +117,10 @@ const App = () => {
     setConvertedText(newText);
   };
 
-  
+  const saveVideo = () => {
+    console.log(convertedText);
+  }
+
   return (
     <div className='main-app'>
       <div className='highlight'>
@@ -125,7 +128,7 @@ const App = () => {
           <h1 className='highlight-title'>Highlight 1</h1>
             <div>
               <h3 className='highlight-title'>Speaker {json.speaker} </h3>
-              <h3 className='highlight-title'>{timesStamps.end !== 0 ? (timesStamps.end - timesStamps.initial).toFixed(2)+ "seconds" : <> </>} </h3>
+              <h3 className='highlight-title'>{timesStamps.end !== 0 ? (timesStamps.end - timesStamps.initial).toFixed(2)+ " seconds" : <> </>} </h3>
             </div>
 
           <div className='highlight-buttons'>
@@ -143,11 +146,14 @@ const App = () => {
           theme='snow'
           value={convertedText}
           onChange={setConvertedText}
-          style={{minHeight: '300px'}}
+          style={{minHeight: '150px'}}
           onChangeSelection={getFocus}
         />
       </div>
 
+      <div className='button-div'>
+        <button className='primary-button' onClick={saveVideo}>Save video</button>
+      </div>
     </div>
   )
 }

@@ -27,11 +27,6 @@
   .highlight-buttons{
     position: absolute;
     bottom: 0;
-
-    .primary-button{
-      font-size: 24px;
-      padding: .5rem 1rem
-    };
   
     .icon{
       font-size: 36px;
@@ -55,6 +50,16 @@
     .editor-wrapper{
       border: 1px white solid;
     }
+  }
+
+  .primary-button{
+    font-size: 18px;
+    padding: .5rem 1rem
+  };
+
+  .button-div{
+    text-align: center;
+    margin-top: 3rem;
   }
 };
 
