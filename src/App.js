@@ -25,6 +25,9 @@ const App = () => {
     setConvertedText(value);
   }, []);
 
+  useEffect(() => {
+    cancelTrim();
+  }, [])
 
   const getFocus = (e) => {
     if (e && e.index !== 0 && e.length !== 0){
@@ -104,7 +107,7 @@ const App = () => {
   const cancelTrim = () => {
     const video = document.getElementById('video');
     video.pause();
-    video.currentTime = 0
+    video.currentTime = 0;
     setTimestamps({initial: 0, end: video.duration});
 
     let newText = ""
